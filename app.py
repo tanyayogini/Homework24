@@ -54,3 +54,4 @@ def db_check():
             'result': result,
         }
     )
+

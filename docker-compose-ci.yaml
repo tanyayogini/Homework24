@@ -7,7 +7,7 @@ services:
       - "25000:25000"
     environment:
       - DB_PASSWORD=$DB_PASSWORD
-      - DB_USER=$DB_USE
+      - DB_USER=$DB_USER
       - DB_NAME=$DB_NAME
       - DB_HOST=db
     depends_on:
@@ -18,7 +18,7 @@ services:
     image: postgres
     environment:
       - POSTGRES_PASSWORD=$DB_PASSWORD
-      - POSTGRES_USER=$DB_USE
+      - POSTGRES_USER=$DB_USER
       - POSTGRES_DB=$DB_NAME
     healthcheck:
       test: /usr/bin/pg_isready
