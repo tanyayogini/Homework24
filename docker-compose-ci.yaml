@@ -1,0 +1,27 @@
+version: '3.3'
+
+services:
+  web:
+    build: .
+    ports:
+      - 25000:25000
+    environment:
+      - DB_PASSWORD=$DB_PASSWORD
+      - DB_USER=$DB_USE
+      - DB_NAME=$DB_NAME
+      - DB_HOST=db
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=$DB_PASSWORD
+      - POSTGRES_USER=$DB_USE
+      - POSTGRES_DB=$DB_NAME
+    healthcheck:
+      test: /usr/bin/pg_isready
+      interval: 5s
+      timeout: 10s
+      retries: 120
